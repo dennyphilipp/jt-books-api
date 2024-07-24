@@ -19,7 +19,7 @@ namespace book_api.Book.Service
 
         internal async Task Execute(UpdateBookDTO dto)
         {
-            var book = await _context.Book.FirstAsync(b => b.Id == dto.Id);
+            var book = await _context.Books.FirstAsync(b => b.Id == dto.Id);
             book.Publisher = dto.Publischer;
             book.Title = dto.Title;
             book.Version = dto.Version;

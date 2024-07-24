@@ -17,7 +17,7 @@ namespace book_api.Book.Service
         }
         internal async Task Execute(int id)
         {
-           await _context.Book.Where(b => b.Id == id)
+           await _context.Books.Where(b => b.Id == id)
                               .ExecuteDeleteAsync();
         }
     }

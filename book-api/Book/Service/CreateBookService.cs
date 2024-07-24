@@ -26,7 +26,7 @@ namespace book_api.Book.Service
                 Year = dto.Year
             };
 
-            await _context.Book.AddAsync(book);
+            await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
         }
     }
