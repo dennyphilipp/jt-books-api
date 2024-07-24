@@ -12,6 +12,8 @@ builder.Services.AddDbContext<Context>(options => {
 
 });
 builder.Services.AddScoped<CreateBookService>();
+builder.Services.AddScoped<DeleteBookService>();
+builder.Services.AddScoped<UpdateBookService>();
 
 var app = builder.Build();
 
