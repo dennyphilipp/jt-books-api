@@ -1,3 +1,4 @@
+using book_api.Author.Controller;
 using book_api.Author.Service;
 using book_api.Book.Service;
 using book_api.Persistence;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<UpdateBookService>();
 #region Author
 builder.Services.AddScoped<CreateAuthorService>();
 builder.Services.AddScoped<DeleteAuthorService>();
+builder.Services.AddScoped<UpdateAuthorService>();
 #endregion
 
 
