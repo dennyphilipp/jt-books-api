@@ -15,6 +15,8 @@ namespace book_api.Persistence
         }
 
         public DbSet<Book.Domain.Book> Book { get; set; }
+        public DbSet<Author.Domain.Author> Authors { get; set; }
+
 
 
     }

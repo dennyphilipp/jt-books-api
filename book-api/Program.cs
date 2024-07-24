@@ -1,3 +1,4 @@
+using book_api.Author.Service;
 using book_api.Book.Service;
 using book_api.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<Context>(options => {
 builder.Services.AddScoped<CreateBookService>();
 builder.Services.AddScoped<DeleteBookService>();
 builder.Services.AddScoped<UpdateBookService>();
+builder.Services.AddScoped<CreateAuthorService>();
 
 var app = builder.Build();
 
