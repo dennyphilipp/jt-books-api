@@ -33,6 +33,9 @@ builder.Services.AddScoped<CreatePaymentTypeService>();
 builder.Services.AddScoped<UpdatePaymentTypeService>();
 builder.Services.AddScoped<DeletePaymentTypeService>();
 
+builder.Services.AddScoped<CreatePaymentService>();
+builder.Services.AddScoped<UpdatePaymentService>();
+builder.Services.AddScoped<DeletePaymentService>();
 #endregion
 
 

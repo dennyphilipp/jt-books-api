@@ -18,11 +18,11 @@ namespace book_api.Payment.Controller
             _updatePaymentTypeService = updatePaymentTypeService;
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdatePaymentTypeDTO dto)
         {
             await _updatePaymentTypeService.Execute(dto);
-            return Created();
+            return Ok();
         }
     }
 }
