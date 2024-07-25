@@ -20,6 +20,8 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<CreateBookService>();
 builder.Services.AddScoped<DeleteBookService>();
 builder.Services.AddScoped<UpdateBookService>();
+builder.Services.AddScoped<FindBookService>();
+
 #endregion
 
 #region Author
