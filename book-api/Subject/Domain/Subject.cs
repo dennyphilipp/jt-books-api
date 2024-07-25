@@ -18,5 +18,7 @@ namespace book_api.Subject.Domain
         [Column("Descricao")]
         [MaxLength(20, ErrorMessage = "A Descrição deve ter no máximo 20 caracteres.")]
         public string Description { get; set; }
+
+        public virtual ICollection<Book.Domain.Book> Books { get; set; }
     }
 }

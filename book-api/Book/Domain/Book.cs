@@ -34,5 +34,8 @@ namespace book_api.Book.Domain
 
         public virtual ICollection<Author.Domain.Author> Authors { get; set; }
 
+        public virtual ICollection<Subject.Domain.Subject> Subjects { get; set; }
+
+
     }
 }
