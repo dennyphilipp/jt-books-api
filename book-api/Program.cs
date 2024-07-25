@@ -31,6 +31,7 @@ builder.Services.AddScoped<FindBookService>();
 builder.Services.AddScoped<CreateAuthorService>();
 builder.Services.AddScoped<DeleteAuthorService>();
 builder.Services.AddScoped<UpdateAuthorService>();
+builder.Services.AddScoped<FindAuthorService>();
 #endregion
 
 #region Payment
