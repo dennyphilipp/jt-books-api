@@ -31,6 +31,7 @@ builder.Services.AddScoped<UpdateAuthorService>();
 #region Payment
 builder.Services.AddScoped<CreatePaymentTypeService>();
 builder.Services.AddScoped<UpdatePaymentTypeService>();
+builder.Services.AddScoped<DeletePaymentTypeService>();
 
 #endregion
 
