@@ -1,6 +1,7 @@
 using book_api.Author.Controller;
 using book_api.Author.Service;
 using book_api.Book.Service;
+using book_api.Payment.Service;
 using book_api.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,10 @@ builder.Services.AddScoped<DeleteAuthorService>();
 builder.Services.AddScoped<UpdateAuthorService>();
 #endregion
 
+#region Payment
+builder.Services.AddScoped<CreatePaymentTypeService>();
+    
+#endregion
 
 
 var app = builder.Build();
