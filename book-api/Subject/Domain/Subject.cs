@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace book_api.Subject.Domain
 {
+    [Table("Assunto")]
     public class Subject
     {
         [Key]
