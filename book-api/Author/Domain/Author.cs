@@ -20,6 +20,6 @@ namespace book_api.Author.Domain
         [MaxLength(40, ErrorMessage = "O Nome deve ter no máximo 40 caracteres.")]
         public string Name { get; set; }
 
-        // public virtual ICollection<Book.Domain.Book> Books { get; set; }
+        public virtual ICollection<Book.Domain.Book> Books { get; set; }
     }
 }

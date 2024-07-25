@@ -32,7 +32,7 @@ namespace book_api.Book.Domain
         [MaxLength(4, ErrorMessage = "O Ano de publicação deve ter no máximo 4 dígitos.")]
         public string Year { get; set; }
 
-        // public virtual ICollection<Author.Domain.Author> Authors { get; set; }
+        public virtual ICollection<Author.Domain.Author> Authors { get; set; }
 
     }
 }
