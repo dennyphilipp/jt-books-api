@@ -36,6 +36,9 @@ namespace book_api.Book.Domain
 
         public virtual ICollection<Subject.Domain.Subject> Subjects { get; set; }
 
+        public virtual ICollection<Payment.Domain.Payment> Payments { get; set; }
+
+
 
     }
 }
