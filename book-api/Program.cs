@@ -1,6 +1,7 @@
 using book_api.Author.Controller;
 using book_api.Author.Service;
 using book_api.Book.Service;
+using book_api.Infrastructure.Exception;
 using book_api.Payment.Service;
 using book_api.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,8 @@ builder.Services.AddScoped<UpdatePaymentService>();
 builder.Services.AddScoped<DeletePaymentService>();
 #endregion
 
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
@@ -52,4 +55,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.UseExceptionHandler();
 app.Run();

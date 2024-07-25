@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using book_api.Book.DTO;
 using book_api.Book.Extension;
+using book_api.Infrastructure.Exception;
 using book_api.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,8 @@ namespace book_api.Book.Service
         internal async Task<BookDTO> FindById(int id)
         {
             var book = await _context.Books.AsNoTracking()
-                                           .FirstOrDefaultAsync(b => b.Id == id);
+                                           .FirstOrDefaultAsync(b => b.Id == id)
+                                           ?? throw new NotFoundException($"O Livro com Id {id} não foi encontrado.");
 
             return book.ToDTO();
         }
