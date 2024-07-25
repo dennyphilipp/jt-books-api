@@ -4,6 +4,7 @@ using book_api.Book.Service;
 using book_api.Infrastructure.Exception;
 using book_api.Payment.Service;
 using book_api.Persistence;
+using book_api.Subject.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Defa‌​ultConnection"));
 
 });
+builder.Services.AddCors();
 
 #region Book
 builder.Services.AddScoped<CreateBookService>();
@@ -41,6 +43,14 @@ builder.Services.AddScoped<UpdatePaymentService>();
 builder.Services.AddScoped<DeletePaymentService>();
 #endregion
 
+#region Subject
+builder.Services.AddScoped<CreateSubjectService>();
+builder.Services.AddScoped<UpdateSubjectService>();
+builder.Services.AddScoped<DeleteSubjectService>();
+builder.Services.AddScoped<FindSubjectService>();
+
+#endregion
+
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 
@@ -56,4 +66,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapControllers();
 app.UseExceptionHandler();
+app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()); // allow credentials
 app.Run();

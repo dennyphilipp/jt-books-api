@@ -7,21 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace book_api.Payment.Controller
 {
-[Route("api/payment-type")]
-public class DeletePaymentTypeController : ControllerBase
-{
-    private readonly DeletePaymentTypeService _deletePaymentTypeService;
-    
-    public DeletePaymentTypeController(DeletePaymentTypeService deletePaymentTypeService)
+    [Route("api/payment-type")]
+    public class DeletePaymentTypeController : ControllerBase
     {
-        _deletePaymentTypeService = deletePaymentTypeService;
-    }
+        private readonly DeletePaymentTypeService _deletePaymentTypeService;
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        await _deletePaymentTypeService.Execute(id);
-        return Ok();
+        public DeletePaymentTypeController(DeletePaymentTypeService deletePaymentTypeService)
+        {
+            _deletePaymentTypeService = deletePaymentTypeService;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _deletePaymentTypeService.Execute(id);
+            return Ok();
+        }
     }
-}
 }
