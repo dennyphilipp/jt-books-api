@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace book_api.Payment.Domain
 {
+    [Table("TipoPagamento")]
     public class PaymentType
     {
         [Key]

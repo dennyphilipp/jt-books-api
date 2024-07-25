@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace book_api.Payment.Domain
 {
+    [Table("Pagamento")]
     public class Payment
     {
         [Key]
