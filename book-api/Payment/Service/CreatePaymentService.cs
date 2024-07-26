@@ -8,6 +8,7 @@ namespace book_api.Payment.Service
     using System.Threading.Tasks;
     using book_api.Payment.Domain;
     using book_api.Payment.DTO;
+    using book_api.Payment.Validator;
     using book_api.Persistence;
 
     public class CreatePaymentService
@@ -21,6 +22,7 @@ namespace book_api.Payment.Service
 
         internal async Task Execute(CreatePaymentDTO dto)
         {
+            var validator = new CreatePaymentValidator(dto, _context);
             var payment = new Payment
             {
                 BookId = dto.BookId,
