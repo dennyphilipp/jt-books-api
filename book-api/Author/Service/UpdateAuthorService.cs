@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using book_api.Author.DTO;
+using book_api.Author.Validator;
 using book_api.Persistence;
 
 namespace book_api.Author.Service
@@ -18,6 +19,7 @@ namespace book_api.Author.Service
 
         public async Task Execute(UpadteAuthorDTO dto)
         {
+            var validator = new UpdateAuthorValidator(dto);
             var author = await _context.Authors.FindAsync(dto.Id);
             author.Name = dto.Name;
             await _context.SaveChangesAsync();
