@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using book_api.Payment.DTO;
+using book_api.Payment.Validator;
 using book_api.Persistence;
 
 namespace book_api.Payment.Service
@@ -18,6 +19,7 @@ namespace book_api.Payment.Service
 
         internal async Task Execute(UpdatePaymentTypeDTO dto)
         {
+            var valitador = new UpdatePaymentTypeValidator(dto);
             var paymentType = await _context.PaymentTypes.FindAsync(dto.Id);
             paymentType.Name = dto.Name;
             await _context.SaveChangesAsync();
