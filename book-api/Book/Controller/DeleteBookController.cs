@@ -17,7 +17,7 @@ namespace book_api.Book.Controller
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Create(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _deleteBookService.Execute(id);
             return Ok();
