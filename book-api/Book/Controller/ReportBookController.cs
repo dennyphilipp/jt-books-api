@@ -20,8 +20,8 @@ namespace book_api.Book.Controller
         [HttpGet("report")]
         public async Task<IActionResult> Report()
         {
-            await _reportBookService.Execute();
-            return Ok();
+            var pdfByte = await _reportBookService.Execute();
+            return File(pdfByte, "application/pdf", "Report.pdf");
         }
     }
 }
