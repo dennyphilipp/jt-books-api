@@ -39,7 +39,7 @@ builder.Services.AddScoped<CreatePaymentTypeService>();
 builder.Services.AddScoped<UpdatePaymentTypeService>();
 builder.Services.AddScoped<DeletePaymentTypeService>();
 builder.Services.AddScoped<FindPaymentTypeService>();
-
+builder.Services.AddScoped<FindPaymentService>();
 builder.Services.AddScoped<CreatePaymentService>();
 builder.Services.AddScoped<UpdatePaymentService>();
 builder.Services.AddScoped<DeletePaymentService>();
@@ -50,7 +50,6 @@ builder.Services.AddScoped<CreateSubjectService>();
 builder.Services.AddScoped<UpdateSubjectService>();
 builder.Services.AddScoped<DeleteSubjectService>();
 builder.Services.AddScoped<FindSubjectService>();
-
 #endregion
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
