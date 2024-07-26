@@ -19,6 +19,18 @@ namespace book_api.Persistence
         public DbSet<Subject.Domain.Subject> Subjects { get; set; }
         public DbSet<Payment.Domain.PaymentType> PaymentTypes { get; set; }
         public DbSet<Payment.Domain.Payment> Payments { get; set; }
+        public DbSet<Book.Domain.ReportBook> ReportBook { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder
+                .Entity<Book.Domain.ReportBook>()
+                .ToView(nameof(ReportBook))
+                .HasKey(t => t.Id);
+        }
 
 
 

@@ -24,7 +24,7 @@ builder.Services.AddScoped<CreateBookService>();
 builder.Services.AddScoped<DeleteBookService>();
 builder.Services.AddScoped<UpdateBookService>();
 builder.Services.AddScoped<FindBookService>();
-
+builder.Services.AddScoped<ReportBookService>();
 #endregion
 
 #region Author
