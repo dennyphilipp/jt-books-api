@@ -24,7 +24,8 @@ namespace book_api.Payment.Validator
             if (dto.Value <= 0)
                 throw new InvalidFieldException("Informe o Valor.");
 
-            var paymentExists = context.Payments.Where(p => p.BookId == dto.BookId)
+            var paymentExists = context.Payments.Where(p => p.Id != dto.Id)
+                                          .Where(p => p.BookId == dto.BookId)
                                           .Where(p => p.TypeId == dto.TypeId)
                                           .Any();
 
