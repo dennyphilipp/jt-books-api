@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using book_api.Author.Domain;
 using book_api.Author.Extension;
 using book_api.Book.DTO;
 using book_api.Persistence;
 using book_api.Subject.Extension;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace book_api.Book.Service
@@ -21,17 +23,32 @@ namespace book_api.Book.Service
 
         internal async Task Execute(CreateBookDTO dto)
         {
+            var authors = await GetAuthors(dto.authors);
+            var subjects = await GetSubjects(dto.subjects);
+            
             var book = new Domain.Book{
                 Publisher = dto.Publischer,
                 Title = dto.Title,
                 Version = dto.Version,
                 Year = dto.Year,
-                Authors = dto.authors.Select(s => s.ToAuthor()).ToList(),
-                Subjects = dto.subjects.Select(s => s.ToSubject()).ToList()
+                Authors = authors,
+                Subjects = subjects
             };
 
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
+        }
+
+        private async Task<ICollection<Author.Domain.Author>> GetAuthors(ICollection<int> authorsId)
+        {
+            return await _context.Authors.Where(a => authorsId.Any(x => a.Id == x ))
+                                        .ToListAsync();
+        }
+
+        private async Task<ICollection<Subject.Domain.Subject>> GetSubjects(ICollection<int> subjectsId)
+        {
+            return await _context.Subjects.Where(a => subjectsId.Any(x => a.Id == x ))
+                                        .ToListAsync();
         }
     }
 }

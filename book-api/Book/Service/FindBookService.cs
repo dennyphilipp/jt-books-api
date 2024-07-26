@@ -22,17 +22,19 @@ namespace book_api.Book.Service
         internal async Task<BookDTO> FindById(int id)
         {
             var book = await _context.Books.AsNoTracking()
+                                           .Include(i => i.Authors)
+                                           .Include(i => i.Subjects)
                                            .FirstOrDefaultAsync(b => b.Id == id)
                                            ?? throw new NotFoundException($"O Livro com Id {id} não foi encontrado.");
 
             return book.ToDTO();
         }
 
-        internal async Task<ICollection<BookDTO>> FindAll()
+        internal async Task<ICollection<BookTableDTO>> FindAll()
         {
             return await _context.Books.AsNoTracking()
                                        .OrderBy(o => o.Title)
-                                       .Select(s => s.ToDTO())
+                                       .Select(s => s.ToTableDTO())
                                        .ToListAsync();
         }
     }
