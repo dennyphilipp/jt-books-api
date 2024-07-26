@@ -6,6 +6,7 @@ using System.Xml;
 using book_api.Author.Domain;
 using book_api.Author.Extension;
 using book_api.Book.DTO;
+using book_api.Book.Validator;
 using book_api.Persistence;
 using book_api.Subject.Extension;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +24,10 @@ namespace book_api.Book.Service
 
         internal async Task Execute(CreateBookDTO dto)
         {
+            var validator = new CreateBookValidator(dto);
             var authors = await GetAuthors(dto.authors);
             var subjects = await GetSubjects(dto.subjects);
-            
+
             var book = new Domain.Book{
                 Publisher = dto.Publischer,
                 Title = dto.Title,
