@@ -7,10 +7,13 @@ using book_api.Infrastructure.Exception;
 
 namespace book_api.Book.Validator
 {
-    public class CreateBookValidator
+    public class UpdateBookValidator
     {
-        public CreateBookValidator(CreateBookDTO dto)
+        public UpdateBookValidator(UpdateBookDTO dto)
         {
+            if (dto.Id <= 0)
+                throw new InvalidFieldException("Informe o Id do livro.");
+
             if (string.IsNullOrWhiteSpace(dto.Title))
                 throw new InvalidFieldException("Informe o Títulio.");
 

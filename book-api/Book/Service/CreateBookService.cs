@@ -25,8 +25,8 @@ namespace book_api.Book.Service
         internal async Task Execute(CreateBookDTO dto)
         {
             var validator = new CreateBookValidator(dto);
-            var authors = await GetAuthors(dto.authors);
-            var subjects = await GetSubjects(dto.subjects);
+            var authors = await GetAuthors(dto.Authors);
+            var subjects = await GetSubjects(dto.Subjects);
 
             var book = new Domain.Book{
                 Publisher = dto.Publischer,

@@ -8,6 +8,6 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace book_api.Book.DTO
 {
-    public record CreateBookDTO(string Title, string Publischer, int Version, string Year, ICollection<int> authors, ICollection<int> subjects);
+    public record CreateBookDTO(string Title, string Publischer, int Version, string Year, ICollection<int> Authors, ICollection<int> Subjects);
     
 }
