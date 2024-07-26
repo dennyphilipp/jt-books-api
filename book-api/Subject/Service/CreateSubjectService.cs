@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using book_api.Persistence;
-using book_api.Subject.Domain;
 using book_api.Subject.DTO;
+using book_api.Subject.Validator;
 
 namespace book_api.Subject.Service
 {
@@ -18,6 +18,7 @@ namespace book_api.Subject.Service
         }
         internal async Task Execute(CreateSubjectDTO dto)
         {
+            var valitador = new CreateSubjectValidator(dto);
             var subject = new Domain.Subject {
                 Description = dto.Description
             };

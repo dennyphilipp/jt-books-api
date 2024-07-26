@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using book_api.Infrastructure.Exception;
 using book_api.Persistence;
 using book_api.Subject.DTO;
+using book_api.Subject.Validator;
 using Microsoft.EntityFrameworkCore;
 
 namespace book_api.Subject.Service
@@ -19,6 +20,8 @@ namespace book_api.Subject.Service
         }
         internal async Task Execute(UpdateSubjectDTO dto)
         {
+            var valitador = new UpdateSubjectValidator(dto);
+
             var subject = await _context.Subjects.FirstOrDefaultAsync(s => s.Id == dto.Id)
             ?? throw new NotFoundException("Assunto não encontrado para atualizar.");
 
