@@ -71,5 +71,15 @@ app.UseCors(x => x
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .SetIsOriginAllowed(origin => true) // allow any origin
-                    .AllowCredentials()); // allow credentials
+                    .AllowCredentials());
+
+ApplyMigrations(app);
 app.Run();
+
+
+static void ApplyMigrations(WebApplication app)
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<Context>();
+    db.Database.Migrate();
+}
