@@ -63,6 +63,11 @@ Antes de começar, certifique-se de ter os seguintes requisitos instalados:
     ```
     http://localhost:5077/swagger/index.html
     ```
+
+3. Execute os testes:
+    ```bash
+    dotnet test
+    ```
 ## Tecnologias Utilizadas
 
 - [.NET Core 8](https://dotnet.microsoft.com/download/dotnet/8.0)
