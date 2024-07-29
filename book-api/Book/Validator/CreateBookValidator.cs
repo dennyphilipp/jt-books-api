@@ -12,7 +12,7 @@ namespace book_api.Book.Validator
         public CreateBookValidator(CreateBookDTO dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
-                throw new InvalidFieldException("Informe o Títulio.");
+                throw new InvalidFieldException("Informe o Título.");
 
             if (string.IsNullOrWhiteSpace(dto.Publischer))
                 throw new InvalidFieldException("Informe a Editora.");

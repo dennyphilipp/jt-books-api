@@ -22,7 +22,7 @@ namespace book_api.Book.Service
             _context = context;
         }
 
-        internal async Task Execute(CreateBookDTO dto)
+        public async Task Execute(CreateBookDTO dto)
         {
             var validator = new CreateBookValidator(dto);
             var authors = await GetAuthors(dto.Authors);
