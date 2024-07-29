@@ -16,7 +16,7 @@ namespace book_api.Subject.Service
         {
             _context = context;
         }
-        internal async Task Execute(CreateSubjectDTO dto)
+        public async Task Execute(CreateSubjectDTO dto)
         {
             var valitador = new CreateSubjectValidator(dto);
             var subject = new Domain.Subject {
