@@ -20,7 +20,7 @@ namespace book_api.Payment.Service
             _context = context;
         }
 
-        internal async Task Execute(CreatePaymentDTO dto)
+        public async Task Execute(CreatePaymentDTO dto)
         {
             var validator = new CreatePaymentValidator(dto, _context);
             var payment = new Payment

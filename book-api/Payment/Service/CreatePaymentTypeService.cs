@@ -20,7 +20,7 @@ namespace book_api.Payment.Service
             _context = context;
         }
 
-        internal async Task Execute(CreatePaymentTypeDTO dto)
+        public async Task Execute(CreatePaymentTypeDTO dto)
         {
             var validator = new CreatePaymentTypeValidator(dto);
             var paymentType = new PaymentType
