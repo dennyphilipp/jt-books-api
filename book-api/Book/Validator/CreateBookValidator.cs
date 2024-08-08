@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using book_api.Book.DTO;
 using book_api.Infrastructure.Exception;
@@ -11,6 +12,7 @@ namespace book_api.Book.Validator
     {
         public CreateBookValidator(CreateBookDTO dto)
         {
+            string pattern = @"^\d+$"; 
             if (string.IsNullOrWhiteSpace(dto.Title))
                 throw new InvalidFieldException("Informe o Título.");
 
@@ -24,6 +26,8 @@ namespace book_api.Book.Validator
                 throw new InvalidFieldException("Informe o ano.");
             else if (dto.Year.Length < 4)
                 throw new InvalidFieldException("Informe o ano com 4 dígitos.");
+            else if (!Regex.IsMatch(dto.Year, pattern))
+                throw new InvalidFieldException("Informe somente números.");
 
             if (dto.Authors is null)
                 throw new InvalidFieldException("Inform os Autores.");
